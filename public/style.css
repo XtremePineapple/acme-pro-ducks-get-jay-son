@@ -1,3 +1,24 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+ul {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+li {
+  list-style-type: none;
+  padding: 0;
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 1rem;
+  margin: 1rem;
+  background-color: purple;
+  color: white;
+  padding: 1rem;
+}
+
+.desc {
+  margin-bottom: 0.5rem;
+}
