@@ -4,13 +4,36 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js'></script>
+    <link rel='stylesheet' href='./public/style.css'><link/>
   </head>
   <body>
     <h1>My React App</h1>
     <div id='root'></div>
     <script type='text/babel'>
-
-      ReactDOM.render(<hr />, document.querySelector('#root'));
+      const {useState, useEffect} = React;
+      const App = ()=> {
+        const [products, setProducts] = useState([])
+        useEffect( ()=> {
+            axios.get('./api/products')
+              .then(response => setProducts(response.data))
+          })
+        return (
+          <div>
+            <hr/>
+            <ul>
+              {products.map(product => {
+                return (
+                  <li key={product.id}>
+                    {product.name}
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        )
+          
+      }
+      ReactDOM.render(<App />, document.querySelector('#root'));
     </script>
   </body>
 </html>
